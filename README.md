@@ -7,7 +7,7 @@ ln -sv /usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/ /usr/local/KMS
 echo "export PATH=/usr/local/KMS/binaries/Linux/intel/static:\$PATH" > /etc/profile.d/vlmcs.sh
 source /etc/profile.d/vlmcs.sh
 chmod +x /usr/local/KMS/binaries/Linux/intel/static/*
-echo "vlmcsd-x64-musl-static" >> /etc/rc.local
+echo "./usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static" >> /etc/rc.local
 vlmcsd-x64-musl-static
 ```
 ### 
