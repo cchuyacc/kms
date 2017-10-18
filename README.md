@@ -7,7 +7,7 @@ ln -sv /usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/ /usr/local/KMS
 echo "export PATH=/usr/local/KMS/binaries/Linux/intel/static:\$PATH" > /etc/profile.d/vlmcs.sh
 source /etc/profile.d/vlmcs.sh
 chmod +x /usr/local/KMS/binaries/Linux/intel/static/*
-sed -i  "$! ./usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static" >> /etc/rc.local && vlmcsd-x64-musl-static
+sed -i  '$! ./usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static' /etc/rc.local && vlmcsd-x64-musl-static
 ```
 ### 
 如果是CentOS记得防火墙开放TCP的1688端口和关闭SELinux
