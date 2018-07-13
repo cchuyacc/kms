@@ -1,5 +1,5 @@
 # 在Linux服务器上自建KMS服务器
-* 一、安装：
+* 一、安装（debian8）：
 ```
 wget https://raw.githubusercontent.com/cchuyacc/kms/master/vlmcsd-svn812-2015-08-30-Hotbird64.zip
 unzip -q vlmcsd-svn812-2015-08-30-Hotbird64.zip -d /usr/local/
@@ -8,6 +8,33 @@ echo "export PATH=/usr/local/KMS/binaries/Linux/intel/static:\$PATH" > /etc/prof
 source /etc/profile.d/vlmcs.sh
 chmod +x /usr/local/KMS/binaries/Linux/intel/static/*
 sed -i  '$i ./usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static' /etc/rc.local && vlmcsd-x64-musl-static
+```
+
+debian8 - debian 9 （使用systemd服务启动）
+```
+vim /etc/systemd/system/kms.service
+```
+#添加以下代码
+```
+[Unit]
+Description=kms deamon
+After=network.target sshd-keygen.service
+[Service]
+Type=forking
+User=root
+Group=root
+ExecStart=/usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static
+Restart=on-failure
+RestartSec=42s
+ExecReload=/bin/kill -HUP $MAINPID
+[Install]
+WantedBy=multi-user.target
+```
+###然后添加执行权限，添加开机启动，启动。
+```
+chmod +x /etc/systemd/system/kms.service
+systemctl enable kms
+systemctl start kms
 ```
 ### 
 如果是CentOS记得防火墙开放TCP的1688端口和关闭SELinux
