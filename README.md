@@ -21,8 +21,6 @@ Description=kms deamon
 After=network.target sshd-keygen.service
 [Service]
 Type=forking
-User=root
-Group=root
 ExecStart=/usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static
 Restart=on-failure
 RestartSec=42s
