@@ -26,7 +26,6 @@ Group=root
 ExecStart=/usr/local/vlmcsd-svn812-2015-08-30-Hotbird64/binaries/Linux/intel/static/vlmcsd-x64-musl-static
 Restart=on-failure
 RestartSec=42s
-ExecReload=/bin/kill -HUP $MAINPID
 [Install]
 WantedBy=multi-user.target
 ```
